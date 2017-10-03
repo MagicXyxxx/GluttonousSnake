@@ -1,5 +1,5 @@
 /*
-	SnakeV2.0ÕıÊ½°æ 
+	SnakeV2.0æ­£å¼ç‰ˆ 
 */ 
 #include <windows.h>
 #include <stdio.h>
@@ -83,7 +83,7 @@ void CreateFood()
         if(i>=0)
         {
             Pos(food.x,food.y);
-            printf("¡ñ");
+            printf("â—");
             break; 
         }
     }
@@ -93,30 +93,32 @@ void CreateFood()
 void Information()
 {
 	Pos(LONG/3,WIDTH/3);
-	printf("ÕâÊÇÓÉ½á¹¹Êı×é¹¹³ÉµÄÌ°³ÔÉß£¬ÓÉ w s a d ¿ØÖÆ·½Ïò");
+	printf("è¿™æ˜¯ç”±ç»“æ„æ•°ç»„æ„æˆçš„è´ªåƒè›‡ï¼Œç”± w s a d æ§åˆ¶æ–¹å‘");
 	Pos(LONG/3,WIDTH/3+2);
-	printf("ÏêÏ¸´úÂëºÍÄ£¿é¿É·ÃÎÊÎÒµÄ²©¿ÍÔ°£º");
+	printf("è¯¦ç»†ä»£ç å’Œæ¨¡å—å¯è®¿é—®æˆ‘çš„åšå®¢å›­ï¼š");
 	Pos(LONG/3,WIDTH/3+4);
-	printf("ÓÃ»§Ãû£ºMagic¼¤Á÷  http://www.cnblogs.com/magicxyx/");
+	printf("ç”¨æˆ·åï¼šMagicæ¿€æµ  http://www.cnblogs.com/magicxyx/");
 	Pos(LONG/3,WIDTH/3+6);
-	printf("Èç·¢ÏÖbug»òÕßÓĞÆäËûÏë·¨µÄ£¬Ò²¿É·¢ËÍÖÁÎÒµÄÓÊÏä£º");
+	printf("å¦‚å‘ç°bugæˆ–è€…æœ‰å…¶ä»–æƒ³æ³•çš„ï¼Œä¹Ÿå¯å‘é€è‡³æˆ‘çš„é‚®ç®±ï¼š");
 	Pos(LONG/3,WIDTH/3+8);
 	printf("www.magic_xyx@foxmail.com");
 	Pos(LONG/3,WIDTH/3+10);
-	printf("½øÈëÓÎÏ·Ç°ÇëÇĞ»»³ÉÓ¢ÎÄÊäÈë");
+	printf("è¿›å…¥æ¸¸æˆå‰è¯·åˆ‡æ¢æˆè‹±æ–‡è¾“å…¥");
 	Pos(LONG/3,WIDTH/3+12);
+
 	system("pause"); 
 	system("cls");
 	Pos(LONG+10,WIDTH-20);
-	printf("³¤¶È£º3 + 0 ");
+	printf("é•¿åº¦ï¼š3 + 0 ");
 	Pos(LONG+10,WIDTH-18);
-	printf("·ÖÊı£º0");
+	printf("åˆ†æ•°ï¼š0");
+
 	Pos(LONG+10,WIDTH-16);
-	printf("ËÙ¶È£º0"); 
+	printf("é€Ÿåº¦ï¼š0"); 
 	Pos(LONG+10,WIDTH-14);
-	printf("°´¿Õ¸ñ¼üÔİÍ£");
+	printf("æŒ‰ç©ºæ ¼é”®æš‚åœ");
 	Pos(LONG+8,WIDTH-12);
-	printf("°´ÈÎÒâ·½Ïò¼ü¼ÌĞø"); 	
+	printf("æŒ‰ä»»æ„æ–¹å‘é”®ç»§ç»­"); 	
 }
 
 void CreateMap()
@@ -125,16 +127,16 @@ void CreateMap()
 	for(i=0;i<LONG;i+=2)
 	{
 		Pos(i,0);
-		printf("¡ö");
+		printf("â– ");
 		Pos(i,WIDTH-1);
-		printf("¡ö");
+		printf("â– ");
 	}
 	for(i=1;i<WIDTH-1;i++)
 	{
 		Pos(0,i);
-		printf("¡ö");
+		printf("â– ");
 		Pos(LONG-2,i);
-		printf("¡ö");
+		printf("â– ");
 	}
 }
 
@@ -146,7 +148,7 @@ void InitializeSnake()
         snake[i].x = (LONG/2-i*2);
         snake[i].y = WIDTH/2;
         Pos(snake[i].x,snake[i].y);
-        printf("¡Ñ");
+        printf("âŠ™");
 	}
 }
 
@@ -156,7 +158,7 @@ void PrintSnake()
 	for(i=0;i<=2+length;i++)
 	{
 		Pos(snake[i].x,snake[i].y);
-		printf("¡Ñ");
+		printf("âŠ™");
 	}	
 }
 
@@ -166,9 +168,11 @@ int ThroughWall()
 		snake[0].y==0 || snake[0].y==29)
 		{
 			Pos(25,15);
-			printf("×²Ç½ ÓÎÏ·½áÊø");
+			printf("æ’å¢™ æ¸¸æˆç»“æŸ");
 			return 1;
 		}
+	Pos(0,WIDTH);
+	printf(" ");
 }
 
 int BiteItself()
@@ -178,7 +182,7 @@ int BiteItself()
 		if((snake[0].x==snake[i].x) && (snake[0].y==snake[i].y))
 		{
 			Pos(25,15);
-			printf("Ò§µ½×Ô¼º ÓÎÏ·½áÊø");
+			printf("å’¬åˆ°è‡ªå·± æ¸¸æˆç»“æŸ");
 			return 1;
 		}
 }
@@ -318,7 +322,6 @@ void RunGame()
 			Pos(25,WIDTH);
 			exit(0); 
 		}		
-		Pos(0,WIDTH);
 		Sleep(speed); 
 	}
 }
