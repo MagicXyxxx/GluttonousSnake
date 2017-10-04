@@ -35,17 +35,14 @@ int BiteItself();
 int main (void)
 { 
 	system("mode con cols=90 lines=35");
-	Information();
-	CreateMap();
+	Information();	CreateMap();
 	InitializeSnake();   
 	CreateFood();
 	RunGame();
 }
 
 void Pos(int x, int y)
-{
-    COORD pos;
-    HANDLE hOutput;
+{    COORD pos;    HANDLE hOutput;
     pos.X = x;
     pos.Y = y;
     hOutput = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -54,9 +51,10 @@ void Pos(int x, int y)
 
 void AfterEatFood()
 {
-	Pos(LONG+20,WIDTH-20);
+
+    Pos(LONG+20,WIDTH-20);	
     printf("%d",length);
-	Pos(LONG+16,WIDTH-18);
+    Pos(LONG+16,WIDTH-18);
     printf("%d",score);
     if(speed>100)
     	speed-=5;
@@ -66,14 +64,14 @@ void AfterEatFood()
 
 void CreateFood()
 {
-	int i;
-	srand((unsigned int)time(0));
+    int i;
+    srand((unsigned int)time(0));
     while(1)
     {
     	do{
-        	food.x = rand()%(LONG/2-6)+2;
-        }while(food.x%2!=0);
-		food.y = rand()%(WIDTH-2)+1;
+        	food.x = rand()%(LONG-6)+2;
+           }while(food.x%2!=0);
+    	 food.y = rand()%(WIDTH-2)+1;
         for(i=0;i<3+length;i++)
             if(food.x==snake[i].x && food.y==snake[i].y)
             {
