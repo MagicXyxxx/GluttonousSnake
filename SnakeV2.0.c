@@ -6,10 +6,12 @@
 #include <time.h>
 #include <stdlib.h> 
 
+
 #define LONG 60
 #define WIDTH 30
 
 typedef struct node{
+
 	int x;
 	int y;
 }Node;
@@ -17,6 +19,8 @@ typedef struct node{
 
 Node snake[60];
 Node food;
+
+
 int length = 0;
 int score = 0;
 int speed = 250;
@@ -35,14 +39,17 @@ int BiteItself();
 int main (void)
 { 
 	system("mode con cols=90 lines=35");
-	Information();	CreateMap();
+	Information();	 
+	CreateMap();
 	InitializeSnake();   
 	CreateFood();
 	RunGame();
 }
 
 void Pos(int x, int y)
-{    COORD pos;    HANDLE hOutput;
+{    
+    COORD pos;
+    HANDLE hOutput;
     pos.X = x;
     pos.Y = y;
     hOutput = GetStdHandle(STD_OUTPUT_HANDLE);
